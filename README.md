@@ -1,2 +1,13 @@
 # Air-Pollution-Visualizer
-to do
+
+# required machine packages:
+-python
+-node.js
+-yarn
+
+# running locally(seperate terminals)
+for react server: yarn start
+for flask server: yarn start-api
+
+^both will restart if source code is changed
+
