@@ -1,0 +1,285 @@
+/*
+===========================
+
+-----Table of Contents-----
+
+===========================
+
+- Background
+- Left Panel
+- Right Panel
+- Navigation
+- Map
+- Stats
+- Media Queries
+
+*/
+
+
+/*
+===========================
+
+-------Background----------
+
+===========================
+*/
+
+.container {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%; /*or vh*/
+    text-align: center;
+    display: flex;
+}
+
+#left-pane {
+    width: 65%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+    min-width:  0px;
+    overflow-y: scroll;
+}
+#right-pane {
+    width: 35%;
+    height: 100%;
+    float: left;
+    background-color:rgb(217, 243, 252);
+    color:white;
+    border-collapse: collapse;
+    min-width: 35%;
+    
+}
+
+#separator {
+    cursor: col-resize; 
+    background-color: black; /*: #FFFBD6*/
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='none' stroke='white'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10px;
+    height: 100%;
+    z-index: 11;
+    
+
+    /* prevent browser's built-in drag from interfering */
+  
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/*
+===========================
+
+-------Left Panel----------
+
+===========================
+*/
+.content-left{
+    float:left;
+    text-align: left;
+    margin-left: 3em;
+}
+.main-logo{
+    margin-left: 0px;
+}
+.air-poll-list-item img{
+    border-radius: 50%;
+    filter: grayscale(100%);
+}
+ul{
+    list-style-type:none;
+}
+.air-poll-list-item{
+    display: flex;
+    flex-direction: row;
+}
+.air-poll-list-item p{
+    padding-left: 20px;
+}
+
+
+/*
+===========================
+
+-------Right Panel---------
+
+===========================
+*/
+
+#cloud-circle {
+    width: 470px;
+    height: 290px;
+    border-radius: 50%;
+    filter: url(#filter);
+    box-shadow: 400px 400px 60px 0px #fff;
+    z-index: 6;
+    position: relative;
+    transform: translate(-360px, -320px);
+    margin:0;
+    padding: 0;
+
+}
+#cloud-circle-2{
+    width: 470px;
+    height: 290px;
+    border-radius: 50%;
+    filter: url(#filter-2);
+    box-shadow: 400px 400px 60px 0px #fff;
+    z-index: 7;
+    position: relative;
+    transform: translate(-360px, -360px);
+    margin:0;
+    padding: 0;
+}
+.underneath-text{
+    color: black;
+    padding:0;
+    transform: translateY(-170px);
+    
+}
+.top-cloud{
+    display: block;
+    position: relative;
+    z-index: 10;
+    color: black;
+    text-align: left;
+    padding-left: 120px;
+    transform: translateY(-110px);
+}
+.cloud-navlink {
+    text-decoration: none;
+}
+.cloud-navlink .top-cloud:hover {
+    color: rgb(117, 225, 252);
+}
+#cloud-2-top{
+    transform: translateY(-140px);
+}
+#cloud-2-under{
+    transform: translateY(-210px);
+}
+
+
+
+/*
+===========================
+
+--------Navigation---------
+
+===========================
+*/
+
+.navigator{
+    z-index:9999999;
+    display: inline-block;
+    position: fixed;
+    margin: 0;
+}
+
+#sidebar{
+    height: 20%; 
+    width: 0px; 
+    height: 0px;
+    position: fixed;
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: #111; 
+    overflow-x: hidden;
+    transition: 0.5s;
+    border-bottom-right-radius: 0.5em;
+}
+
+.nav-links{
+    padding-top: 30px;
+}
+#sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.navlink{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+#sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.navlink:hover {
+    color: #f1f1f1;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-bottom-right-radius: 0.5em;
+}
+.closebtn{
+    float:right;
+    padding-right:30px;
+}
+
+.openbtn:hover {
+    background-color: #444;
+    border-bottom-right-radius: 0.5em;
+  }
+
+
+/*
+===========================
+
+-----------Map-------------
+
+===========================
+*/
+
+.map{
+    padding-top:60px;
+    position: fixed;
+}
+
+/*
+===========================
+
+----------Stats------------
+
+===========================
+*/
+
+.stats{
+    padding-top:60px;
+    position: fixed;
+}
+
+/*
+===========================
+
+-------Media Queries-------
+
+===========================
+*/
+
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+    .navlink {font-size: 18px;}
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './img/logo.svg';
+import './style/App.css';
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
