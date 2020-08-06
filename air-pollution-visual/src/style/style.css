@@ -255,7 +255,19 @@ ul{
 .map{
     padding-top:60px;
     position: fixed;
+    width: 100%;
+    text-align: center;
+    overflow-y: scroll;
+    height: 100%;
 }
+
+.gradientbar{
+    width: 300px;
+    height: 100px;
+    border: solid black 3px;
+}
+
+
 
 /*
 ===========================
