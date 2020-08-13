@@ -4,7 +4,12 @@ class Stats extends React.Component {
         return (
             <div className="stats">
             <h1>stats</h1>
-            <p>stats page body content</p>
+            <p>hii</p>
+            <p>hii</p>
+            <p>hii</p>
+            <p>hii</p>
+            <p>hii</p>
+            <p>hii</p>
          </div>
         )
      }

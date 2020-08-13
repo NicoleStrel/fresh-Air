@@ -6,11 +6,11 @@
 ===========================
 
 - Background
-- Left Panel
-- Right Panel
+- Clouds
 - Navigation
 - Map
 - Stats
+- Footer
 - Media Queries
 
 */
@@ -24,76 +24,51 @@
 ===========================
 */
 
-.container {
-    position: fixed;
-    top: 0px;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%; /*or vh*/
-    text-align: center;
-    display: flex;
-}
-
-#left-pane {
-    width: 65%;
-    height: 100%;
-    float: left;
-    border-collapse: collapse;
-    min-width:  0px;
-    overflow-y: scroll;
-}
-#right-pane {
-    width: 35%;
-    height: 100%;
-    float: left;
+.section-1{
     background-color:rgb(217, 243, 252);
-    color:white;
-    border-collapse: collapse;
-    min-width: 35%;
-    
+    overflow-x: hidden;
+}
+.slidefirstCloud{
+    animation: slidefirstCloud 10s ;
+    animation-fill-mode: forwards;
+  }
+.slidesecondCloud {
+    animation: slidesecondCloud 10s;
+    animation-fill-mode: forwards;
 }
 
-#separator {
-    cursor: col-resize; 
-    background-color: black; /*: #FFFBD6*/
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='none' stroke='white'/></svg>");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 10px;
-    height: 100%;
-    z-index: 11;
-    
-
-    /* prevent browser's built-in drag from interfering */
+@keyframes slidefirstCloud {
+    from {
+      transform: translate(-360px, -320px);
+      visibility: visible;
+    }
   
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    to {
+        transform: translate(100px, -320px);
+    }
+}
+@keyframes slidesecondCloud {
+    from {
+      transform: translate(-360px, -360px);
+      visibility: visible;
+    }
+  
+    to {
+        transform: translate(-900px, -360px);
+    }
 }
 
 
-/*
-===========================
-
--------Left Panel----------
-
-===========================
-*/
-.content-left{
-    float:left;
-    text-align: left;
-    margin-left: 3em;
-}
-.main-logo{
-    margin-left: 0px;
+.section-2{
+    background-color: white;
+    color: black;
+   /* margin: 7em 14em;*/
 }
 .air-poll-list-item img{
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     filter: grayscale(100%);
-}
-ul{
-    list-style-type:none;
 }
 .air-poll-list-item{
     display: flex;
@@ -107,14 +82,14 @@ ul{
 /*
 ===========================
 
--------Right Panel---------
+-------Colouds---------
 
 ===========================
 */
 
 #cloud-circle {
-    width: 470px;
-    height: 290px;
+    width: 400px;
+    height: 260px;
     border-radius: 50%;
     filter: url(#filter);
     box-shadow: 400px 400px 60px 0px #fff;
@@ -126,8 +101,8 @@ ul{
 
 }
 #cloud-circle-2{
-    width: 470px;
-    height: 290px;
+    width: 400px;/*470px;*/
+    height: 260px;/*290px;*/
     border-radius: 50%;
     filter: url(#filter-2);
     box-shadow: 400px 400px 60px 0px #fff;
@@ -140,31 +115,12 @@ ul{
 .underneath-text{
     color: black;
     padding:0;
-    transform: translateY(-170px);
+    transform: translateY(-100px);
     
 }
-.top-cloud{
-    display: block;
-    position: relative;
-    z-index: 10;
-    color: black;
-    text-align: left;
-    padding-left: 120px;
-    transform: translateY(-110px);
-}
-.cloud-navlink {
-    text-decoration: none;
-}
-.cloud-navlink .top-cloud:hover {
-    color: rgb(117, 225, 252);
-}
-#cloud-2-top{
-    transform: translateY(-140px);
-}
 #cloud-2-under{
-    transform: translateY(-210px);
+    transform: translateY(-135px);
 }
-
 
 
 /*
@@ -254,11 +210,11 @@ ul{
 
 .map{
     padding-top:60px;
-    position: fixed;
+    background-color:rgb(217, 243, 252);
     width: 100%;
     text-align: center;
-    overflow-y: scroll;
     height: 100%;
+    padding-bottom: 2em;
 }
 
 .gradientbar{
@@ -266,7 +222,6 @@ ul{
     height: 100px;
     border: solid black 3px;
 }
-
 
 
 /*
@@ -279,9 +234,19 @@ ul{
 
 .stats{
     padding-top:60px;
-    position: fixed;
+  
 }
 
+
+
+#footer{
+    background-color:rgb(217, 243, 252);
+    padding: 2em;
+}
+.copyright{
+    text-decoration: none;
+    list-style-type: none;
+}
 /*
 ===========================
 

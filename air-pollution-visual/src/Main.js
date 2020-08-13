@@ -5,18 +5,15 @@ import Home from './components/Home';
 import Map from './components/Map';
 import Stats from './components/Stats';
 import Error from './components/Error';
-import Navigation from './components/Navigation';
+
  
 class Main extends Component {
   render() {
     return (      
        <BrowserRouter>
         <div>
-          <Navigation />
             <Switch>
-             <Route path="/" component={Home} exact/>
-             <Route path="/map" component={Map}/>
-             <Route path="/stats" component={Stats}/>
+            <Route path="/" component={Home} exact/>
             <Route component={Error}/>
            </Switch>
         </div> 
@@ -26,3 +23,8 @@ class Main extends Component {
 }
  
 export default Main;
+/*<Route path="/map" component={Map}/>
+             <Route path="/stats" component={Stats}/>*/
+             /*<Navigation />
+             <Route path="/map" component={Map}/>
+             */
