@@ -112,7 +112,7 @@ class Home extends React.Component {
                         
                        
                     </div>
-                    <Map />
+                    <Map couTags={this.props.couTags}/>
                     <Stats />
 
                     <footer id="footer">

@@ -122,84 +122,6 @@
     transform: translateY(-135px);
 }
 
-
-/*
-===========================
-
---------Navigation---------
-
-===========================
-*/
-
-.navigator{
-    z-index:9999999;
-    display: inline-block;
-    position: fixed;
-    margin: 0;
-}
-
-#sidebar{
-    height: 20%; 
-    width: 0px; 
-    height: 0px;
-    position: fixed;
-    z-index: 1; 
-    top: 0;
-    left: 0;
-    background-color: #111; 
-    overflow-x: hidden;
-    transition: 0.5s;
-    border-bottom-right-radius: 0.5em;
-}
-
-.nav-links{
-    padding-top: 30px;
-}
-#sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.navlink{
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-#sidebar a:hover {
-    color: #f1f1f1;
-}
-
-.navlink:hover {
-    color: #f1f1f1;
-}
-
-.openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-bottom-right-radius: 0.5em;
-}
-.closebtn{
-    float:right;
-    padding-right:30px;
-}
-
-.openbtn:hover {
-    background-color: #444;
-    border-bottom-right-radius: 0.5em;
-  }
-
-
 /*
 ===========================
 
@@ -210,7 +132,7 @@
 
 .map{
     padding-top:60px;
-    background-color:rgb(217, 243, 252);
+    background-color: rgb(217, 243, 252);
     width: 100%;
     text-align: center;
     height: 100%;

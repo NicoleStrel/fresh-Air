@@ -7,10 +7,13 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "debug": "^4.1.1",
+    "jquery": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
+    "react-tooltip": "^4.2.8",
+    "tooltipster": "^4.2.8",
     "typescript": "^3.9.7",
     "yarn": "^1.22.4"
   },
