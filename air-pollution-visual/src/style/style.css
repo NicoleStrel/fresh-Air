@@ -144,7 +144,16 @@
     height: 100px;
     border: solid black 3px;
 }
-
+.tooltipp p,.tooltipp h5{
+    margin: 0;
+}
+.center{
+    text-align: center;
+    align-items: center;
+}
+.center div h5{
+    padding-left: 1em;
+}
 
 /*
 ===========================

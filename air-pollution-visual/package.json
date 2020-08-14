@@ -13,6 +13,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-tooltip": "^4.2.8",
+    "react-world-flags": "^1.4.0",
     "tooltipster": "^4.2.8",
     "typescript": "^3.9.7",
     "yarn": "^1.22.4"

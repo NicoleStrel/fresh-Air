@@ -4,6 +4,11 @@ import map from '../img/world.svg';
 import CountryData from './CountryData';
 import $ from 'jquery';
 import ReactTooltip from 'react-tooltip';
+import Flag from 'react-world-flags'
+import readBasicData from './readData';
+
+var year="2017"; //make year changeable
+
 
 const renderCountries = () => {
     const countries = new CountryData();
@@ -101,9 +106,27 @@ const getSVG = () =>{
 class Map extends React.Component {
     renderToolTips = () => {
         return this.props.couTags.map((tag) =>{
-            return <ReactTooltip id={tag} >
-                <span>{tag}</span>
+            let tooltipdata=readBasicData(tag, year);
+            if (tooltipdata.tonnes =="No data"){
+                return <ReactTooltip id={tag} className="tooltipp center" aria-haspopup='true'>
+                <div className="row" >
+                    <Flag code={tag} fallback={ <span>Unknown</span> } width="30"/>
+                    <h5>{tooltipdata.name}</h5>
+                </div>
+                <p>{tooltipdata.tonnes} for {year}</p>
+                
             </ReactTooltip>
+            }
+            else{
+            return <ReactTooltip id={tag} className="tooltipp center" aria-haspopup='true'>
+                <div className="row" >
+                    <Flag  code={tag} fallback={ <span>Unknown</span> } width="30"/>
+                    <h5>{tooltipdata.name}</h5>
+                </div>
+                <p>{tooltipdata.tonnes} x 10<sup>3</sup> TONNES</p>
+                <p>({year})</p>
+            </ReactTooltip>
+            }
         });
     }
 
@@ -124,7 +147,7 @@ class Map extends React.Component {
                 <div className="gradientbar">
                 gradient bar goes here
                 </div>
-                
+                <i className="france flag"></i>
                 </center>
 
             </div>
