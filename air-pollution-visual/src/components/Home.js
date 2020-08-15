@@ -1,11 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import "../style/style.css";
 import logo from '../img/freshAir.png';
 import Map from './Map';
 import Stats from './Stats';
-
-import { NavLink } from 'react-router-dom';
 
 
 class Home extends React.Component {
@@ -47,7 +44,7 @@ class Home extends React.Component {
                     <br></br>
                     <br></br>
                     <div className="section-2 w-75">
-                        <h2>Our Misson</h2>
+                        <h2>Our Misson- NEED TO FIXX</h2>
                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacus sapien, 
                             mattis ac tellus et, venenatis consequat sem. Praesent laoreet justo sed nisi eleifend, 
                             at laoreet nisl congue. Donec blandit urna sit amet faucibus porttitor. Praesent accumsan eros 
@@ -67,14 +64,14 @@ class Home extends React.Component {
                         <div className="row">
                             <div className="col-md air-poll-list-item">
                      
-                                <img src="https://picsum.photos/100??random=1"></img>
+                                <img src="https://picsum.photos/100??random=1" alt="sample-1"></img>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacus sapien, 
                                     mattis ac tellus et, venenatis consequat sem. Praesent laoreet justo sed nisi eleifend, 
                                     at laoreet nisl congue. Donec blandit urna sit amet faucibus porttitor.</p>
                             </div>
                             <br></br>
                             <div className="col-md air-poll-list-item">
-                                <img src="https://picsum.photos/100?random=2"></img>
+                                <img src="https://picsum.photos/100?random=2" alt="sample-2"></img>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacus sapien, 
                                     mattis ac tellus et, venenatis consequat sem. Praesent laoreet justo sed nisi eleifend, 
                                     at laoreet nisl congue. Donec blandit urna sit amet faucibus porttitor.</p>
@@ -85,7 +82,7 @@ class Home extends React.Component {
                         <div className="row">
                             <div className="col-md air-poll-list-item">
 
-                                <img src="https://picsum.photos/100?random=3"></img>
+                                <img src="https://picsum.photos/100?random=3" alt="sample-3"></img>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacus sapien, 
                                     mattis ac tellus et, venenatis consequat sem. Praesent laoreet justo sed nisi eleifend, 
                                     at laoreet nisl congue. Donec blandit urna sit amet faucibus porttitor.</p>
@@ -93,7 +90,7 @@ class Home extends React.Component {
                             <br></br>
                             <div className="col-md air-poll-list-item">
 
-                                <img src="https://picsum.photos/100?random=4"></img>
+                                <img src="https://picsum.photos/100?random=4" alt="sample-4"></img>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacus sapien, 
                                     mattis ac tellus et, venenatis consequat sem. Praesent laoreet justo sed nisi eleifend, 
                                     at laoreet nisl congue. Donec blandit urna sit amet faucibus porttitor.</p>
@@ -112,13 +109,16 @@ class Home extends React.Component {
                         
                        
                     </div>
-                    <Map couTags={this.props.couTags}/>
-                    <Stats />
+                    <Map couTags={this.props.couTags} year={this.props.year} data={this.props.data}/>
+                    <Stats data={this.props.data}/>
 
                     <footer id="footer">
                         <div className="container">
                             <ul className="copyright">
                                 <li>&copy; copyright 2020 freshAir</li>
+                            </ul>
+                            <ul className="credits">
+                                <li>(....CRUX dataset credits go here! .. )</li>
                             </ul>
                         </div>
                     </footer>

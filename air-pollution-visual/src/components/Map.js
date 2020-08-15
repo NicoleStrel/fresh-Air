@@ -1,13 +1,12 @@
 import React from 'react';
 import "../style/style.css";
-import map from '../img/world.svg';
 import CountryData from './CountryData';
 import $ from 'jquery';
 import ReactTooltip from 'react-tooltip';
-import Flag from 'react-world-flags'
+import Flag from 'react-world-flags';
 import readBasicData from './readData';
 
-var year="2017"; //make year changeable
+
 
 
 const renderCountries = () => {
@@ -23,14 +22,15 @@ const renderCountries = () => {
 
 
 const getSVG = () =>{
-    return <svg 
-        xmlnsDc="http://purl.org/dc/elements/1.1/"
-        xmlnsCc="http://creativecommons.org/ns#"
-        xmlnsRdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlnsSvg="http://www.w3.org/2000/svg"
+    return <svg
+        className="svg-map" 
+        xmlnsdc="http://purl.org/dc/elements/1.1/"
+        xmlnscc="http://creativecommons.org/ns#"
+        xmlnsrdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlnssvg="http://www.w3.org/2000/svg"
         xmlns="http://www.w3.org/2000/svg"
-        xmlnsSodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-        xmlnsInkscape="http://www.inkscape.org/namespaces/inkscape"
+        xmlnssodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlnsinkscape="http://www.inkscape.org/namespaces/inkscape"
         enable_background="new 0 0 2000 1001"
         pretty_print="False"
         style={{strokelinejoin:'round', stroke:'#000', fill: 'none'}}
@@ -39,8 +39,8 @@ const getSVG = () =>{
         width="1300px"
         height="900px"
         id="svg2"
-        inkscapeVersion="0.48.4 r9939"
-        sodipodiDocname="world.svg">
+        inkscapeversion="0.48.4 r9939"
+        sodipodidocname="world.svg">
         <sodipodiNamedview
         pagecolor="#ffffff"
         bordercolor="#666666"
@@ -48,19 +48,19 @@ const getSVG = () =>{
         objecttolerance="10"
         gridtolerance="10"
         guidetolerance="10"
-        inkscapePageopacity="0"
-        inkscapePageshadow="2"
-        inkscapeWindow-width="1920"
-        inkscapeWindow-height="1137"
+        inkscapepageopacity="0"
+        inkscapepageshadow="2"
+        inkscapewindow-width="1920"
+        inkscapewindow-height="1137"
         id="namedview231"
         showgrid="false"
-        inkscapeZoom="1.144"
-        inkscapeCx="593.00732"
-        inkscapeCy="460.46398"
-        inkscapeWindow-x="1192"
-        inkscapeWindow-y="118"
-        inkscapeWindow-maximized="1"
-        inkscapeCurrent-layer="svg2"
+        inkscapezoom="1.144"
+        inkscapecx="593.00732"
+        inkscapecy="460.46398"
+        inkscapewindow-x="1192"
+        inkscapewindow-y="118"
+        inkscapewindow-maximized="1"
+        inkscapecurrent-layer="svg2"
         />
         <defs id="defs4">
         <style
@@ -91,10 +91,10 @@ const getSVG = () =>{
             </views>
             <rdfRDF>
             <ccWork
-                rdfAAbout="">
+                rdfaabout="">
                 <dcFormat>image/svg+xml</dcFormat>
                 <dcType
-                    rdfResource="http://purl.org/dc/dcmitype/StillImage" />
+                    rdfresource="http://purl.org/dc/dcmitype/StillImage" />
                 <dcTitle />
             </ccWork>
             </rdfRDF>
@@ -106,32 +106,33 @@ const getSVG = () =>{
 class Map extends React.Component {
     renderToolTips = () => {
         return this.props.couTags.map((tag) =>{
-            let tooltipdata=readBasicData(tag, year);
-            if (tooltipdata.tonnes =="No data"){
-                return <ReactTooltip id={tag} className="tooltipp center" aria-haspopup='true'>
+            //let tooltipdata=readBasicData(tag, this.props.year);
+            var countryData=this.props.data.filter(d => d.cou === tag)[0]
+            if (countryData.tonnes === "No data"){
+                return <ReactTooltip id={tag} key={tag} className="tooltipp center" aria-haspopup='true'>
                 <div className="row" >
                     <Flag code={tag} fallback={ <span>Unknown</span> } width="30"/>
-                    <h5>{tooltipdata.name}</h5>
+                    <h5>{countryData.name}</h5>
                 </div>
-                <p>{tooltipdata.tonnes} for {year}</p>
+                <p>{countryData.tonnes} for {this.props.year}</p>
                 
             </ReactTooltip>
             }
             else{
-            return <ReactTooltip id={tag} className="tooltipp center" aria-haspopup='true'>
+            return <ReactTooltip id={tag} key={tag} className="tooltipp center" aria-haspopup='true'>
                 <div className="row" >
                     <Flag  code={tag} fallback={ <span>Unknown</span> } width="30"/>
-                    <h5>{tooltipdata.name}</h5>
+                    <h5>{countryData.name}</h5>
                 </div>
-                <p>{tooltipdata.tonnes} x 10<sup>3</sup> TONNES</p>
-                <p>({year})</p>
+                <p>{countryData.tonnes} x 10<sup>3</sup> TONNES</p>
+                <p>({this.props.year})</p>
             </ReactTooltip>
             }
         });
     }
 
     componentDidMount() {
-        const countries = new CountryData();
+        //const countries = new CountryData();
         //console.log ( countries.countryInfos);
         $(document).ready(function() {
         });
@@ -140,7 +141,13 @@ class Map extends React.Component {
     render() {
         return (
             <div className="map">
-                <h1>2017</h1>
+                <h1>{this.props.year}</h1>
+                <center>
+                <div  id="legend">
+                        <div className="color-box"></div>
+                        <p className="no-data">No data from CRUX OECD - Air Emissions by Source dataset</p>
+                </div>
+                </center>
                 {getSVG()}
                 {this.renderToolTips()}
                 <center>

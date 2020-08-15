@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import ReactTooltip from 'react-tooltip';
 
 class CountryData {
 
@@ -11,16 +10,17 @@ class CountryData {
       this.fillData();
     }
     hasData = (countryInfo) => {
-      if (countryInfo.cou!=''){
+      if (countryInfo.cou !== ''){
         return true;
       }
       return false;
     }
     renderCountryPath = (countryInfo, fillColor, strokeColor,strokeWidth) => {
-      if (countryInfo.cou == ''){
+      if (countryInfo.cou === ''){
         return  <path
-        inkscapeConnector-curvature="0"
+        inkscapeconnector-curvature="0"
         id={countryInfo.id}
+        key={countryInfo.id}
         data-name={countryInfo.name}
         data-id={countryInfo.id}
         d={countryInfo.path}
@@ -29,9 +29,9 @@ class CountryData {
       }
       else{
         let path="/"+countryInfo.cou;
-        return <NavLink className="navlink" data-tip data-for={countryInfo.cou} to={path}>
+        return <NavLink className="navlink" data-tip data-for={countryInfo.cou} key={countryInfo.id} to={path}>
             <path
-              inkscapeConnector-curvature="0"
+              inkscapeconnector-curvature="0"
               id={countryInfo.id}
               data-name={countryInfo.name}
               data-id={countryInfo.id}
