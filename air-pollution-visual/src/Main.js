@@ -7,7 +7,7 @@ import Error from './components/Error';
 import generateDataList from './components/readData';
  
 const countryTags =['AUS', 'AUT', 'BEL', 'CAN', 'CHE', 'CRI', 'CZE', 'DEU', 'DNK', 'EST', 'FIN', 'GBR', 'GRC', 'HUN', 'IRL', 'ISL', 'ISR', 'ITA', 'JPN', 'KOR', 'LTU', 'LUX', 'LVA', 'MEX', 'NLD', 'NOR', 'NZL', 'POL', 'PRT', 'RUS', 'SVK', 'SVN', 'SWE', 'TUR', 'USA', 'FRA', 'ESP', 'CHL'];
-var year="2016";
+var year="2017";
 var data=generateDataList(year, countryTags);
 
 class Main extends Component {

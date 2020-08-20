@@ -1,5 +1,6 @@
 import React from 'react';
 import Flag from 'react-world-flags';
+import { NavLink } from 'react-router-dom';
 
 class Stats extends React.Component {
     render() {
@@ -18,22 +19,30 @@ class Stats extends React.Component {
                 </thead>
                 <tbody>
                 {
+                
+                this.props.data.map(function(item, index){
                     
-                this.props.data.map(function(item){
-                    return <tr>
-                        <td>1</td>
-                        <td>
-                            <div className="intensity">
-                            </div>
-                        </td>
-                        <td>
-                            <div><Flag code={item.cou} fallback={ <span>Unknown</span> } width="30"/>
-                            <p>{item.name}</p>
-                            </div>
-                        </td>
-                        <td>{item.tonnes}</td>
-                        <td>n/a</td>
-                    </tr>    
+                    if (item.hexcode != '#FFFBD6'){
+                        var divStyle = {
+                            backgroundColor: item.hexcode,
+                            border: '1px solid grey',
+                        }
+                        return <tr>
+                            <td>{index+1}</td>
+                            <td>
+                                <div style={divStyle} className="intensity" >
+                                </div>
+                            </td>
+                            <td><NavLink className="navlink" to={"/"+item.cou}>
+                                <div><Flag code={item.cou} fallback={ <span>Unknown</span> } width="30"/>
+                                <p>{item.name}</p>
+                                </div>
+                                </NavLink>
+                            </td>
+                            <td>{item.tonnes}</td>
+                            <td>n/a</td>
+                        </tr>    
+                    }
                 })
                         
                 }
