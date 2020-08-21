@@ -27,7 +27,13 @@ class CountryPage extends React.Component {
                 <div>
                 {
                 this.props.data.pollutants.map(function(pol){
-                return <p>{pol.name} -- {pol.amount}</p>
+                return <div>
+                    <h3>{pol.name} -- {pol.amount}</h3>
+                    {pol.polvars.map(function(polvar){
+                        return <p>{polvar.var} xxx {polvar.amount}</p>
+                    })
+                    }
+                </div>
                 })
                 }
                 </div>

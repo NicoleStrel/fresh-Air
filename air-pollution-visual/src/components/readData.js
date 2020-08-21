@@ -30,6 +30,10 @@ const calculateTonnesAndRead=(cou, year) =>{
     var pollutants=[];
     var pollutantnames=[];
     var poltotal=0;
+    //for each pollutant ...
+    var polvars=[];
+    var polvarnames=[];
+
     data.map ((data) =>{
         if (data.Cou === cou && data.Year === year){
            //filter data:
@@ -42,13 +46,23 @@ const calculateTonnesAndRead=(cou, year) =>{
                     }
                     pollutants.push({
                         "name": data.Pollutant,
-                        "amount": 0
-                    })
+                        "amount": 0,
+                        "polvars":polvars
+                    });
                     pollutantnames.push(data.Pollutant);
                     poltotal=0;
+                    polvars.length=0;
+                    polvarnames.length=0;
                 }
-                tonnes=tonnes+parseFloat(data.Value)
-                poltotal=poltotal+parseFloat(data.Value)
+                tonnes=tonnes+parseFloat(data.Value);
+                poltotal=poltotal+parseFloat(data.Value);
+
+                //for each pollutant ..
+                polvars.push({
+                    "var": data.Variable,
+                    "amount": parseFloat(data.Value),
+                });
+                polvarnames.push(data.Variable); //test theseeeeeeee ///hereeeee
             }
         }
     });
