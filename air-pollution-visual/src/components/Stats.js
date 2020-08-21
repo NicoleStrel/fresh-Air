@@ -40,7 +40,11 @@ class Stats extends React.Component {
                                 </NavLink>
                             </td>
                             <td>{item.tonnes}</td>
-                            <td>n/a</td>
+                            <td>{
+                            item.pollutants.map(function(pol){
+                                return <p>{pol.name}</p>
+                            })
+                            }</td>
                         </tr>    
                     }
                 })

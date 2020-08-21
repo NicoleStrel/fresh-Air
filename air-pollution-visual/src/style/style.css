@@ -191,8 +191,8 @@
 */
 
 .stats{
-    padding-top:60px;
-  
+    padding-top:3em;
+    padding-bottom:4em;
 }
 .intensity{
     width: 30px;
@@ -201,6 +201,9 @@
     /*border: 1px solid grey;*/
     border-radius: 0.5em;
     /*background-color: grey;*/
+}
+tr{
+    border-bottom: 1px solid black;
 }
 
 

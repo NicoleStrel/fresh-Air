@@ -47,7 +47,7 @@ class Map extends React.Component {
             version="1.1"
             viewBox="0 0 2000 1001"
             width="1300px"
-            height="900px"
+            height="600px"
             id="svg2"
             inkscapeversion="0.48.4 r9939"
             sodipodidocname="world.svg">

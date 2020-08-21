@@ -11,6 +11,14 @@ class CountryPage extends React.Component {
                 <h1>{this.props.data.name}</h1>
                 <Flag  code={this.props.cou} fallback={ <span>Unknown</span> } width="100"/>
                 <p>TOTAL: {this.props.data.tonnes} x 10<sup>3</sup> TONNES</p>
+                <h4>Pollutants:</h4>
+                <div>
+                {
+                this.props.data.pollutants.map(function(pol){
+                return <p>{pol.name} -- {pol.amount}</p>
+                })
+                }
+                </div>
             </div>
         )
     }

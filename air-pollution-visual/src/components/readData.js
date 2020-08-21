@@ -2,12 +2,11 @@ import data from '../data/airemission.json';
 import colorCalc from './ColorCalc';
 
 /*returns country name and total tonnes polluted that year*/
-const readBasicData =(cou, year) =>{
-    var tonnes=calculateTonnes(cou, year);
+const readData =(cou, year) =>{
+    var [tonnes, pollutants]=calculateTonnesAndRead(cou, year);
     if (tonnes === 0){
         tonnes="No data"
     }
-    
     else{
         tonnes=(Math.round(tonnes*100))/100
     }
@@ -20,23 +19,39 @@ const readBasicData =(cou, year) =>{
         "tonnes": tonnes,
         "hexcode": color[0],
         "hexidx": color[1],
+        "pollutants": pollutants,
     }
 }
 
 
-const calculateTonnes=(cou, year) =>{
+const calculateTonnesAndRead=(cou, year) =>{
     var tonnes=0; //*10^3
+    var pollutants=[];
+    var pollutantnames=[];
+    var poltotal=0;
     data.map ((data) =>{
         if (data.Cou === cou && data.Year === year){
            //filter data:
             if (data.Unit !== "Index" && data.Variable !== "Total emissions per capita" && data.Variable !=="Total emissions per unit of GDP" && data.Variable !== "Total emissions per unit of GDP, Kg per 1000 USD" && data.Variable !=="Total emissions, Index 2000 = 100"){ 
                 //console.log ("new addition: ", data.Value, ", unit: ", data.Unit, ",variable: ", data.Variable);
-                
+                if (!(pollutantnames.includes(data.Pollutant))){
+                    if (pollutants.length >0){
+                        let idx=pollutants.length-1;
+                        pollutants[idx].amount=(Math.round(poltotal*100))/100;
+                    }
+                    pollutants.push({
+                        "name": data.Pollutant,
+                        "amount": 0
+                    })
+                    pollutantnames.push(data.Pollutant);
+                    poltotal=0;
+                }
                 tonnes=tonnes+parseFloat(data.Value)
+                poltotal=poltotal+parseFloat(data.Value)
             }
         }
     });
-    return tonnes
+    return [tonnes, pollutants]
 }
 
 
@@ -44,7 +59,7 @@ const calculateTonnes=(cou, year) =>{
 const generateDataList= (year, couTags) =>{
     var list=[];
     for (let cou in couTags){
-        var data=readBasicData(couTags[cou], year);
+        var data=readData(couTags[cou], year);
         list.push(data)
     }
     var sorted=bubble_sort_data(list);
