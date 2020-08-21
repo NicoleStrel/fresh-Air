@@ -139,10 +139,22 @@ class Map extends React.Component {
         });
         //console.log("coutags: ", this.props.couTags);
     }
+    clickPrev = () => {
+        this.props.decreseYear();
+    }
+    clickNext = () => {
+        this.props.increaseYear();
+    }
     render() {
         return (
             <div className="map">
-                <h1>{this.props.year}</h1>
+                <center>
+                <div className="changeyear">
+                    <div onClick={this.clickPrev}>prev</div>
+                    <h1>{this.props.year}</h1>
+                    <div onClick={this.clickNext}>next</div>
+                </div>
+                </center>
                 <center>
                 <div  id="legend">
                         <div className="color-box"></div>

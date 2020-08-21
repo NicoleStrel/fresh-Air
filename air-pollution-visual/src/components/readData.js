@@ -20,6 +20,7 @@ const readData =(cou, year) =>{
         "hexcode": color[0],
         "hexidx": color[1],
         "pollutants": pollutants,
+        "largestPol" :calcLargestPol (pollutants),
     }
 }
 
@@ -51,7 +52,23 @@ const calculateTonnesAndRead=(cou, year) =>{
             }
         }
     });
+    //when done, add the last pollutant:
+    if (pollutants.length >0){
+        let idx=pollutants.length-1;
+        pollutants[idx].amount=(Math.round(poltotal*100))/100;
+    }
     return [tonnes, pollutants]
+}
+const calcLargestPol=(pollutants)=>{
+    var largest="";
+    var largestval=0;
+    for (let i in pollutants){
+        if (pollutants[i].amount > largestval){
+            largest=pollutants[i].name;
+            largestval=pollutants[i].amount;
+        }
+    }
+    return largest
 }
 
 
