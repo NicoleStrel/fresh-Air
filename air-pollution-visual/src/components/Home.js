@@ -109,7 +109,7 @@ class Home extends React.Component {
                         
                        
                     </div>
-                    <Map couTags={this.props.couTags} year={this.props.year} data={this.props.data} increaseYear={this.props.increaseYear} decreseYear={this.props.decreseYear}/>
+                    <Map couTags={this.props.couTags} year={this.props.year} data={this.props.data} increaseYear={this.props.increaseYear} decreseYear={this.props.decreseYear} gradient={this.props.gradient}/>
                     <Stats data={this.props.data}/>
 
                     <footer id="footer">

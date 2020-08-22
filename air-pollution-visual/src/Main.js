@@ -5,9 +5,9 @@ import Home from './components/Home';
 import CountryPage from './components/CountryPage';
 import Error from './components/Error';
 import generateDataList from './components/readData';
- 
-const countryTags =['AUS', 'AUT', 'BEL', 'CAN', 'CHE', 'CRI', 'CZE', 'DEU', 'DNK', 'EST', 'FIN', 'GBR', 'GRC', 'HUN', 'IRL', 'ISL', 'ISR', 'ITA', 'JPN', 'KOR', 'LTU', 'LUX', 'LVA', 'MEX', 'NLD', 'NOR', 'NZL', 'POL', 'PRT', 'RUS', 'SVK', 'SVN', 'SWE', 'TUR', 'USA', 'FRA', 'ESP', 'CHL'];
+import {gradient} from './components/ColorCalc';
 
+const countryTags =['AUS', 'AUT', 'BEL', 'CAN', 'CHE', 'CRI', 'CZE', 'DEU', 'DNK', 'EST', 'FIN', 'GBR', 'GRC', 'HUN', 'IRL', 'ISL', 'ISR', 'ITA', 'JPN', 'KOR', 'LTU', 'LUX', 'LVA', 'MEX', 'NLD', 'NOR', 'NZL', 'POL', 'PRT', 'RUS', 'SVK', 'SVN', 'SWE', 'TUR', 'USA', 'FRA', 'ESP', 'CHL'];
 
 class Main extends Component {
   state = { 
@@ -43,7 +43,7 @@ class Main extends Component {
        <BrowserRouter>
         <div>
             <Switch>
-            <Route path="/" render={routeProps => <Home {...routeProps} couTags={countryTags} year={this.state.year} data={this.state.data} increaseYear={this.increaseYear} decreseYear={this.decreseYear}/>} exact/>
+            <Route path="/" render={routeProps => <Home {...routeProps} couTags={countryTags} year={this.state.year} data={this.state.data} increaseYear={this.increaseYear} decreseYear={this.decreseYear} gradient={gradient}/>} exact/>
             {this.generateCountryRoutes()}
             <Route component={Error}/>
            </Switch>

@@ -6,14 +6,79 @@ import ReactTooltip from 'react-tooltip';
 import Flag from 'react-world-flags';
 import readBasicData from './readData';
 
+function dragElement(elmnt, colors){
+    var milestonesX=[];
+    console.log (milestonesX);
 
+    calculateMilestones();
+    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
 
+    //----------draggable element funcs----------
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        //oldY = e.clientY;
+       
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+    }
 
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        
+       var changed=false;
+        
+        //check if cursor is in the right position to switch 
+       for (let m in milestonesX){
+        //let varPos=elmnt.offsetTop -oldY + e.clientY;
 
+           if ((e.clientX)>=(milestonesX[m]-5) && (e.clientX)<=(milestonesX[m]+5)){
+               //console.log("current Y:  ", varPos, "changed y: ", milestonesY[m])
+               var oldLeft=elmnt.style.left;
+               elmnt.style.left = (milestonesX[m]) + "px";
+               if (oldLeft!=elmnt.style.left){
+                    changed=true;
+               }
+               break;
+           }
+       }
+       if(changed){
+            //highlight the colors on the map
+       }
+        
+    }
 
+    function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+    function calculateMilestones(){
+        for (let i=0; i<colors.length; i++){
+            let color=colors[i];
+            var color_div=document.getElementById(color);
+            milestonesX.push($(color_div).position().left);
+        }
+    }
+
+}
 
 
 class Map extends React.Component {
+    colorsList=[];
+
+    constructor(props, context){
+        super(props, context);
+        this.state={colors: []}
+    }
+    
+    componentDidMount() {
+        console.log("hi")
+        dragElement( document.getElementById("separator"), this.colorsList);
+    }
     renderCountries = () => {
         const countries = new CountryData();
             return countries.countryInfos.map((countryInfo) => {
@@ -131,21 +196,22 @@ class Map extends React.Component {
             }
         });
     }
-
-    componentDidMount() {
-        //const countries = new CountryData();
-        //console.log ( countries.countryInfos);
-        $(document).ready(function() {
-        });
-        //console.log("coutags: ", this.props.couTags);
-    }
     clickPrev = () => {
         this.props.decreseYear();
     }
     clickNext = () => {
         this.props.increaseYear();
     }
+    /*
+    setColors = (newcolors) => {
+        this.setState(prevState => ({
+            colors: newcolors
+          }))
+        console.log(this.state.colors);
+    }*/
     render() {
+        var me = this;
+
         return (
             <div className="map">
                 <center>
@@ -165,9 +231,23 @@ class Map extends React.Component {
                 {this.renderToolTips()}
                 <center>
                 <div className="gradientbar">
-                gradient bar goes here
+                <div id="separator" ></div>
+                
+                {   
+                    this.props.gradient.map(function(color){
+                        var divStyle = {
+                            backgroundColor: color,
+                        }
+                        /*
+                        var oldcolors=me.state.colors;
+                        console.log (typeof(me.state.colors))
+                        var newcolors=oldcolors.push(color);*/
+                        me.colorsList.push(color);
+                        return <div className="color-gradient" id={color}style={divStyle}></div>
+                    })
+                    
+                }
                 </div>
-                <i className="france flag"></i>
                 </center>
 
             </div>

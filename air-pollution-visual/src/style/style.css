@@ -142,7 +142,27 @@
 .gradientbar{
     width: 300px;
     height: 100px;
-    border: solid black 3px;
+    /*border: solid black 3px;*/
+    display:flex;
+    flex-direction:row;
+}
+#separator {
+    cursor: col-resize; 
+    background-color:red; /*: #FFFBD6*/
+    width: 1px;
+    height: 100%;
+    z-index: 11;
+    
+    /* prevent browser's built-in drag from interfering */
+  
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.color-gradient{
+    flex: 1 1 auto;
+
 }
 .tooltipp p,.tooltipp h5{
     margin: 0;

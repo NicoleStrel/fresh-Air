@@ -24,7 +24,7 @@ const generateGradient = () =>{
 /* -- Starting vals --*/
 //no pollution->white (index zero)
 var highpol=610000; //black color
-var gradient=generateGradient().reverse();
+export var gradient=generateGradient().reverse();
 var numcolors= gradient.length;
 var eachstep=highpol/numcolors;
 
@@ -42,4 +42,4 @@ const colorCalc =(totalPol)=>{
 
 
 
-export default colorCalc
+export default colorCalc;
