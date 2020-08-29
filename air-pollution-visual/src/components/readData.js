@@ -106,14 +106,14 @@ function bubble_sort_data(list){
         swapp = false;
         for (var i=0; i < last; i++){
             var compare1;
-            if (newlist[i].tonnes == "No data"){
+            if (newlist[i].tonnes === "No data"){
                 compare1=0;
             }
             else{
                 compare1=parseFloat(newlist[i].tonnes);
             }
             var compare2; 
-            if (newlist[i+1].tonnes == "No data"){
+            if (newlist[i+1].tonnes === "No data"){
                 compare2=0;
             }
             else{

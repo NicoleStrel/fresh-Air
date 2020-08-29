@@ -22,7 +22,7 @@ class Stats extends React.Component {
                 
                 this.props.data.map(function(item, index){
                     
-                    if (item.hexcode != '#FFFBD6'){
+                    if (item.hexcode !== '#FFFBD6'){
                         var divStyle = {
                             backgroundColor: item.hexcode,
                             border: '1px solid grey',

@@ -16,7 +16,7 @@ class CountryData {
       return false;
     }
     renderCountryPath = (countryInfo, fillColor, strokeColor,strokeWidth) => {
-      if (countryInfo.cou === '' || fillColor == '#FFFBD6'){
+      if (countryInfo.cou === '' || fillColor === '#FFFBD6'){
         return  <path
         inkscapeconnector-curvature="0"
         id={countryInfo.id}

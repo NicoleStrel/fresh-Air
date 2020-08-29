@@ -31,7 +31,7 @@ var eachstep=highpol/numcolors;
 
 const colorCalc =(totalPol)=>{
     // "No data" ->yellow 
-    if (totalPol == "No data"){
+    if (totalPol === "No data"){
         return ['#FFFBD6', 0 ];
     }
     else{

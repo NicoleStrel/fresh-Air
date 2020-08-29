@@ -1,0 +1,120 @@
+/* This CSS is for the country Page */
+@import url('https://fonts.googleapis.com/css2?family=Scope+One&display=swap');
+
+.country-page{
+    font-family: 'Scope One', serif;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.changeyear{
+    text-align:center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin:1em;
+}
+.flag{
+    margin-top:2em;
+    margin-bottom:1em;
+    border:0.5px solid black;
+}
+
+.arrow{
+    text-decoration: none;
+    display: inline-block;
+    /*padding: 10px 16px;*/
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    height:50px;
+    width: 50px;
+    font-size: 2em;
+    line-height:50px;
+}
+.left{
+    margin-right:1em;
+}
+.right{
+    margin-left:1em;
+}
+.year{
+    line-height:60px;
+}
+.arrow:hover , .arrow:focus{
+    background-color: black;
+    color:white;
+    cursor: pointer;
+}
+
+
+/*pollutants  grid */
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    margin-bottom:2em;
+}
+.grid-item {
+    background-color:#cccccc;
+    text-align: center;
+    border-radius: 1em;
+    padding: 1em;
+    padding-top:2em;
+}
+.pol-table{
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+.pol-table tr{
+    border: none;
+}
+.pol-table tr:hover{
+    background-color:white;
+    border-radius: 3em;
+    color:black;
+}
+
+.table-var{
+    text-align:left;
+}
+.table-ammount{
+    text-align: right;
+    font-weight: 600;
+}
+.tot-amount{
+    color: rgb(86, 163, 189);
+    margin-bottom: 1.5em;
+}
+.largest-pol{
+    margin:1em;
+}
+.main-logo:hover{
+    opacity:0.6;
+}
+
+
+@media screen and (max-width: 1146px) {
+    .country-page{
+        margin-left: 6%;
+        margin-right: 6%;
+    }
+}
+
+@media screen and (max-width: 905px) {
+    .grid-container{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+
+@media screen and (max-width: 449px) {
+    .flag{
+        width: 250px;
+    }
+    .main-logo{
+        width: 50px;
+    }
+}
+

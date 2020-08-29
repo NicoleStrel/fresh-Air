@@ -4,7 +4,6 @@ import CountryData from './CountryData';
 import $ from 'jquery';
 import ReactTooltip from 'react-tooltip';
 import Flag from 'react-world-flags';
-import readBasicData from './readData';
 
 function dragElement(elmnt, colors){
     var milestonesX=[];
@@ -39,7 +38,7 @@ function dragElement(elmnt, colors){
                //console.log("current Y:  ", varPos, "changed y: ", milestonesY[m])
                var oldLeft=elmnt.style.left;
                elmnt.style.left = (milestonesX[m]) + "px";
-               if (oldLeft!=elmnt.style.left){
+               if (oldLeft!==elmnt.style.left){
                     changed=true;
                }
                break;
@@ -216,9 +215,9 @@ class Map extends React.Component {
             <div className="map">
                 <center>
                 <div className="changeyear">
-                    <div onClick={this.clickPrev}>prev</div>
-                    <h1>{this.props.year}</h1>
-                    <div onClick={this.clickNext}>next</div>
+                    <div className="arrow-map left-map" onClick={this.clickPrev}>&#8249;</div>
+                    <h1 className="year-map">{this.props.year}</h1>
+                    <div className="arrow-map right-map" onClick={this.clickNext}>&#8250;</div>
                 </div>
                 </center>
                 <center>
