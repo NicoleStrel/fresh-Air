@@ -75,7 +75,6 @@ class Map extends React.Component {
     }
     
     componentDidMount() {
-        console.log("hi")
         dragElement( document.getElementById("separator"), this.colorsList);
     }
     renderCountries = () => {
@@ -84,7 +83,6 @@ class Map extends React.Component {
                 var fillColor='';
                 if (countries.hasData(countryInfo)){
                     var countryData=this.props.data.filter(d => d.cou === countryInfo.cou)[0];
-                    //console.log("name:",countryData.cou, ", hexcode: ", countryData.hexcode, ", pol: ", countryData.tonnes);
                     fillColor =countryData.hexcode;
                 }
                 else{
@@ -201,13 +199,6 @@ class Map extends React.Component {
     clickNext = () => {
         this.props.increaseYear();
     }
-    /*
-    setColors = (newcolors) => {
-        this.setState(prevState => ({
-            colors: newcolors
-          }))
-        console.log(this.state.colors);
-    }*/
     render() {
         var me = this;
 
@@ -237,10 +228,6 @@ class Map extends React.Component {
                         var divStyle = {
                             backgroundColor: color,
                         }
-                        /*
-                        var oldcolors=me.state.colors;
-                        console.log (typeof(me.state.colors))
-                        var newcolors=oldcolors.push(color);*/
                         me.colorsList.push(color);
                         return <div className="color-gradient" id={color}style={divStyle}></div>
                     })

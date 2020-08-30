@@ -11,8 +11,9 @@ const readData =(cou, year) =>{
         tonnes=(Math.round(tonnes*100))/100
     }
     const item = data.filter(d => d.Cou === cou); //gives list of every item that matches this
-    //console.log (item[0].Country)
     var color =colorCalc(tonnes);
+    var largest= calcLargestPol (pollutants);
+
     return {
         "cou" : cou,
         "name": item[0].Country,
@@ -20,7 +21,7 @@ const readData =(cou, year) =>{
         "hexcode": color[0],
         "hexidx": color[1],
         "pollutants": pollutants,
-        "largestPol" :calcLargestPol (pollutants),
+        "largestPol" : largest,
     }
 }
 
@@ -38,7 +39,6 @@ const calculateTonnesAndRead=(cou, year) =>{
         if (data.Cou === cou && data.Year === year){
            //filter data:
             if (data.Unit !== "Index" && data.Variable !== "Total emissions per capita" && data.Variable !=="Total emissions per unit of GDP" && data.Variable !== "Total emissions per unit of GDP, Kg per 1000 USD" && data.Variable !=="Total emissions, Index 2000 = 100"){ 
-                //console.log ("new addition: ", data.Value, ", unit: ", data.Unit, ",variable: ", data.Variable);
                 if (!(pollutantnames.includes(data.Pollutant))){
                     if (pollutants.length >0){
                         let idx=pollutants.length-1;
@@ -58,11 +58,13 @@ const calculateTonnesAndRead=(cou, year) =>{
                 poltotal=poltotal+parseFloat(data.Value);
 
                 //for each pollutant ..
-                polvars.push({
-                    "var": data.Variable,
-                    "amount": parseFloat(data.Value),
-                });
-                polvarnames.push(data.Variable); //test theseeeeeeee ///hereeeee
+                if (!(polvarnames.includes(data.Variable))){
+                    polvars.push({
+                        "var": data.Variable,
+                        "amount": parseFloat(data.Value),
+                    });
+                    polvarnames.push(data.Variable);
+                }
             }
         }
     });
