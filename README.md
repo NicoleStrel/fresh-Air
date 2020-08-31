@@ -6,6 +6,8 @@
 - yarn
 
 ### running locally(seperate terminals)
+npm install
+
 for react server: yarn start <br>
 for flask server: yarn start-api
 
