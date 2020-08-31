@@ -13,7 +13,7 @@ class Stats extends React.Component {
                         <th>Rank</th>
                         <th>Intensity</th>
                         <th>Country</th>
-                        <th>Total Pollution(tonnes x 10^3)</th>
+                        <th>Total Pollution ( tonnes x 10<sup>3</sup> )</th>
                         <th>Types of Pollutants</th>
                     </tr>
                 </thead>
@@ -33,18 +33,24 @@ class Stats extends React.Component {
                                 <div style={divStyle} className="intensity" >
                                 </div>
                             </td>
-                            <td><NavLink className="navlink" to={"/"+item.cou}>
-                                <div><Flag code={item.cou} fallback={ <span>Unknown</span> } width="30"/>
-                                <p>{item.name}</p>
+                            <td>
+                                <NavLink className="navlink stats-link" to={"/"+item.cou}>
+                                <div className="name-flag">
+                                    <Flag className="stats-flag" code={item.cou} fallback={ <span>Unknown</span> } width="40"/>
+                                    <p className="country-name">{item.name}</p>
                                 </div>
                                 </NavLink>
                             </td>
-                            <td>{item.tonnes}</td>
-                            <td>{
-                            item.pollutants.map(function(pol){
-                                return <p>{pol.name}</p>
-                            })
-                            }</td>
+                            <td className="stats-tonnes">{item.tonnes}</td>
+                            <td>
+                                <ul>
+                                    {
+                                item.pollutants.map(function(pol){
+                                    return <li>{pol.name}</li>
+                                })
+                                }
+                                </ul>
+                            </td>
                         </tr>    
                     }
                 })

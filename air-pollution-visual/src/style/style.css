@@ -1,3 +1,4 @@
+
 /*
 ===========================
 
@@ -82,7 +83,7 @@
 /*
 ===========================
 
--------Colouds---------
+-------Clouds---------
 
 ===========================
 */
@@ -265,10 +266,45 @@
     border-radius: 0.5em;
     /*background-color: grey;*/
 }
-tr{
+.stats tr{
     border-bottom: 1px solid black;
 }
-
+.stats table{
+    width: 65%;
+    text-align: center;
+}
+.stats ul{
+    padding-top:1em;
+    text-decoration: none;
+    list-style-type: none;
+}
+.stats li{
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+.name-flag{
+    margin-top: 1em;
+}
+.country-name{
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-decoration: none;
+    color: black;
+}
+.country-name:hover{
+    color: rgb(86, 163, 189)
+}
+.stats-flag:hover{
+    opacity: 0.5;
+}
+.stats-link:hover{
+    text-decoration: none;
+    color: rgb(86, 163, 189);
+}
+.stats-tonnes{
+    color: rgb(86, 163, 189);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
 
 /*
 ===========================
