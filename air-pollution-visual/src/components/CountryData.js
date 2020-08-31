@@ -24,7 +24,7 @@ class CountryData {
         data-name={countryInfo.name}
         data-id={countryInfo.id}
         d={countryInfo.path}
-        style={{fill:fillColor,fillrule:'evenodd',stroke:strokeColor,strokewidth:strokeWidth +'px'}}
+        style={{fill:fillColor,fillrule:'evenodd',stroke:strokeColor,strokewidth:strokeWidth}}
       />
       }
       else{
@@ -36,7 +36,7 @@ class CountryData {
               data-name={countryInfo.name}
               data-id={countryInfo.id}
               d={countryInfo.path}
-              style={{fill:fillColor,fillrule:'evenodd',stroke:strokeColor,strokewidth:strokeWidth +'px'}}
+              style={{fill:fillColor,fillrule:'evenodd',stroke:strokeColor,strokeWidth:strokeWidth}}
             />
         </NavLink>
       }

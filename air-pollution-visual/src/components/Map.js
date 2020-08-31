@@ -5,91 +5,137 @@ import $ from 'jquery';
 import ReactTooltip from 'react-tooltip';
 import Flag from 'react-world-flags';
 
-function dragElement(elmnt, colors){
-    var milestonesX=[];
-    console.log (milestonesX);
-
-    calculateMilestones();
-    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
-
-    //----------draggable element funcs----------
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        //oldY = e.clientY;
-       
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        
-       var changed=false;
-        
-        //check if cursor is in the right position to switch 
-       for (let m in milestonesX){
-        //let varPos=elmnt.offsetTop -oldY + e.clientY;
-
-           if ((e.clientX)>=(milestonesX[m]-5) && (e.clientX)<=(milestonesX[m]+5)){
-               //console.log("current Y:  ", varPos, "changed y: ", milestonesY[m])
-               var oldLeft=elmnt.style.left;
-               elmnt.style.left = (milestonesX[m]) + "px";
-               if (oldLeft!==elmnt.style.left){
-                    changed=true;
-               }
-               break;
-           }
-       }
-       if(changed){
-            //highlight the colors on the map
-       }
-        
-    }
-
-    function closeDragElement() {
-        /* stop moving when mouse button is released:*/
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-    function calculateMilestones(){
-        for (let i=0; i<colors.length; i++){
-            let color=colors[i];
-            var color_div=document.getElementById(color);
-            milestonesX.push($(color_div).position().left);
-        }
-    }
-
-}
-
-
 class Map extends React.Component {
     colorsList=[];
-
+    severities =[
+        'Low',
+        'Satisfactory',
+        'Moderate',
+        'Poor',
+        'Severe',
+    ]
+    
+    /*
     constructor(props, context){
         super(props, context);
-        this.state={colors: []}
+        //this.state={colors: []}
     }
+    */
+    state = { 
+        selected_hex:  '#FFFFFF',
+        severity: this.severities[0]
+    }
+    Capitalize(str){
+        return str.toUpperCase();
+    }
+    updateState = ( color, severity) => {
+        this.setState(() => ({
+            selected_hex: color,
+            severity: severity,
+        }))
+    }
+
+    dragElement(elmnt, colors, severities){
+        var me=this;
+        const segment=colors.length/5;
+        var milestonesX=[];
+        console.log (milestonesX);
     
+        calculateMilestones();
+        document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+    
+        //----------draggable element funcs----------
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+    
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            
+           var changed=false;
+            var chosen=0;
+            //check if cursor is in the right position to switch 
+           for (let m in milestonesX){
+                if ((e.clientX)>=(milestonesX[m][0]-0.5) && (e.clientX)<=(milestonesX[m][0]+0.5)){
+                   var oldLeft=elmnt.style.left;
+                   elmnt.style.left = (milestonesX[m][0]) + "px";
+                   if (oldLeft!==elmnt.style.left){
+                        changed=true;
+                        chosen =milestonesX[m];
+                   }
+                   break;
+               }
+           }
+
+           if(changed){
+               //color
+                var color =me.Capitalize(chosen[1].id);
+                //polution
+                var idx= colors.findIndex(col => col === chosen[1].id);
+               
+                var severity='';
+                for (let i=1; i<5; i++){
+                    if (idx <=segment*i){
+                        severity=severities[i-1];
+                        break;
+                    }
+                }
+                if (severity == ''){
+                    severity=severities[4];
+                }
+                me.updateState(color, severity);
+           }
+            
+        }
+    
+        function closeDragElement() {
+            /* stop moving when mouse button is released:*/
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+        function calculateMilestones(){
+            for (let i=0; i<colors.length; i++){
+                let color=colors[i];
+                var color_div=document.getElementById(color);
+                milestonesX.push([$(color_div).position().left, color_div]);
+            }
+        }
+    
+    }
     componentDidMount() {
-        dragElement( document.getElementById("separator"), this.colorsList);
+        var seperator=document.getElementById("separator");
+        this.dragElement(seperator , this.colorsList, this.severities);
     }
     renderCountries = () => {
         const countries = new CountryData();
             return countries.countryInfos.map((countryInfo) => {
+                //fill and stoke
                 var fillColor='';
+                var strokeColor='';
+                var strokeWidth='';
                 if (countries.hasData(countryInfo)){
                     var countryData=this.props.data.filter(d => d.cou === countryInfo.cou)[0];
                     fillColor =countryData.hexcode;
+                    //console.log (this.state.selected_hex," vs " , fillColor.toUpperCase())
+                    if (this.state.selected_hex == fillColor.toUpperCase()){
+                        strokeColor= '#a30202';
+                        strokeWidth = '3px';
+                    }
+                    else{
+                        strokeColor = '#000000';
+                        strokeWidth = '1px';
+                    }
                 }
                 else{
-                    fillColor ='#FFFBD6';
+                    fillColor = '#FFFBD6';
+                    strokeColor = '#000000';
+                    strokeWidth = '1px';
                 }
-                const strokeColor = '#000000';
-                const strokeWidth = countries.hasData(countryInfo) ? '2': '1'; 
                 return countries.renderCountryPath(countryInfo, fillColor, strokeColor, strokeWidth);
             });
         };
@@ -220,23 +266,32 @@ class Map extends React.Component {
                 {this.getSVG()}
                 {this.renderToolTips()}
                 <center>
-                <div className="gradientbar">
-                <div id="separator" ></div>
                 
-                {   
-                    this.props.gradient.map(function(color){
-                        var divStyle = {
-                            backgroundColor: color,
-                        }
-                        me.colorsList.push(color);
-                        return <div className="color-gradient" id={color}style={divStyle}></div>
-                    })
+                <p>Drag the red bar below to browse the shades of pollution on the map:</p>
+                
+                <div className="gradientbar">
                     
-                }
+                    <div id="separator" ></div>
+ 
+                    
+                    {   
+                        this.props.gradient.map(function(color){
+                            var divStyle = {
+                                backgroundColor: color,
+                            }
+                            me.colorsList.push(color);
+                            return <div className="color-gradient" id={color} style={divStyle}></div>
+                        })
+                        
+                    }
+                    
                 </div>
+                <p className="severity">{this.state.severity} pollution</p>
+                
                 </center>
-
+                
             </div>
+
         )
      }
 }

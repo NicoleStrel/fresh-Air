@@ -1,8 +1,7 @@
 /* This CSS is for the country Page */
-@import url('https://fonts.googleapis.com/css2?family=Scope+One&display=swap');
+
 
 .country-page{
-    font-family: 'Scope One', serif;
     margin-left: 15%;
     margin-right: 15%;
 }

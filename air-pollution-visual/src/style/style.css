@@ -148,11 +148,12 @@
 }
 #separator {
     cursor: col-resize; 
-    background-color:red; /*: #FFFBD6*/
+    background-color:#a30202; /*: #FFFBD6*/
     width: 1px;
-    height: 100%;
-    z-index: 11;
-    
+    height: 100px;
+    position: absolute;
+	z-index: 1000;
+	cursor: move;
     /* prevent browser's built-in drag from interfering */
   
     -moz-user-select: none;
@@ -231,6 +232,17 @@
 }
 .year-map{
     line-height:50px;
+}
+
+.severity {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    border-radius: 0.5em;
+    margin-top: 0.5em;
+    display: inline-block;
+    /*font-weight: 700;*/
 }
 
 /*

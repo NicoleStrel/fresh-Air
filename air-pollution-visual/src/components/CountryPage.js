@@ -58,6 +58,9 @@ class CountryPage extends React.Component {
             return this.ShowData()
         }
     }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
     render() {
         var me = this;
         return (<div>
