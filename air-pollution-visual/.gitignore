@@ -27,4 +27,4 @@ venv
 __pycache__
 
 #data
-/src/data
+#/src/data
