@@ -66,17 +66,21 @@
    /* margin: 7em 14em;*/
 }
 .air-poll-list-item img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    /*border-radius: 50%;*/
     filter: grayscale(100%);
 }
 .air-poll-list-item{
     display: flex;
     flex-direction: row;
 }
-.air-poll-list-item p{
-    padding-left: 20px;
+.air-poll-list-item span{
+    padding-left: 30px;
+    text-align: left;
+}
+.air-poll-list-item span strong {
+    background-color: rgb(217, 243, 252);
 }
 
 
