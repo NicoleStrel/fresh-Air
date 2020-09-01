@@ -1,4 +1,4 @@
-# Air-Pollution-Visualizer
+# fresh-Air
 
 Forked from : https://github.com/NicoleStrel/fresh-Air
 
