@@ -3,7 +3,7 @@
 The Github files used in hosting amplify app in AWS is : https://github.com/Siddharth1698/fresh-Air
 
 ## Run locally
-- Install all the package: `npm install` <br>
+- Install all the packages: `npm install` <br>
 - Go to https://github.com/Siddharth1698/fresh-Air and download airemission.json. Add it to this repo in 'src/data/' (create a new folder called data). 
 - Run the react application: `npm run start`
 
