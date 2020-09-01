@@ -117,9 +117,11 @@ class Home extends React.Component {
                             <ul className="copyright">
                                 <li>&copy; copyright 2020 freshAir</li>
                             </ul>
+                            {/*
                             <ul className="credits">
                                 <li>(....CRUX dataset credits go here! .. )</li>
                             </ul>
+                            */}
                         </div>
                     </footer>
                     </center>

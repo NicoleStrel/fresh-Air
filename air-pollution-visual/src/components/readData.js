@@ -13,7 +13,8 @@ const readData =(cou, year) =>{
     const item = data.filter(d => d.Cou === cou); //gives list of every item that matches this
     var color =colorCalc(tonnes);
     var largest= calcLargestPol (pollutants);
-
+    var totimgsrc= totalImgSrc (item[0].Country);
+    var srcDict=pollutantImgSrcDict(pollutants, item[0].Country);
     return {
         "cou" : cou,
         "name": item[0].Country,
@@ -22,6 +23,8 @@ const readData =(cou, year) =>{
         "hexidx": color[1],
         "pollutants": pollutants,
         "largestPol" : largest,
+        'totimgsrc' : totimgsrc,
+        "srcDict" : srcDict,
     }
 }
 
@@ -87,7 +90,28 @@ const calcLargestPol=(pollutants)=>{
     return largest
 }
 
+const totalImgSrc=(name)=>{
+    var name_new=name.replace(/\s+/g, ''); //no white space
+    return "/graphs/Total/"+name_new+".png";
+}
 
+const pollutantImgSrcDict=(pollutants, name)=>{
+    var dict = {
+        'Carbon Monoxide': 'CarbonMonoxide',
+        'Nitrogen Oxides': 'NitrogenOxides',
+        'Non-methane Volatile Organic Compounds': 'NonMethane',
+        'Particulates (PM10)': 'PM10',
+        'Particulates (PM2.5)': 'PM25',
+        'Sulphur Oxides': 'SulphurOxide',
+    }
+    var srcDict ={};
+    for (let i in pollutants){
+        var abbrev=dict[pollutants[i].name]; //folder abbrevation
+        var name_new=name.replace(/\s+/g, ''); //no white space
+        srcDict[pollutants[i].name]="/graphs/"+abbrev+"/"+name_new+".png";
+    }
+    return srcDict
+}
 
 const generateDataList= (year, couTags) =>{
     var list=[];
@@ -133,6 +157,7 @@ function bubble_sort_data(list){
     } while (swapp);
  return newlist; 
 }
+
 
 
 export default generateDataList

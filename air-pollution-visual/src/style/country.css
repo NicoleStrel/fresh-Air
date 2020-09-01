@@ -93,6 +93,19 @@
     opacity:0.6;
 }
 
+.pol-graph{
+    margin-top: 2em;
+
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
 
 @media screen and (max-width: 1146px) {
     .country-page{
@@ -115,5 +128,23 @@
     .main-logo{
         width: 50px;
     }
+}
+
+/*
+===========================
+
+----------Footer-----------
+
+===========================
+*/
+#footer{
+    background-color:rgb(217, 243, 252);
+    padding: 2em;
+}
+
+.note{
+    text-decoration: none;
+    list-style-type: none;
+    margin:0;
 }
 
