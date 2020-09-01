@@ -1,10 +1,9 @@
 # fresh-Air
 
-The Github files used in hosting amplify app in AWS is : https://github.com/Siddharth1698/fresh-Air
+The github files used in hosting amplify app in AWS is: https://github.com/Siddharth1698/fresh-Air. This repo also includes the Jupiter Notebook containing the SageMaker python code.
 
 ## Run locally
-- Install all the packages: `npm install` <br>
-- Go to https://github.com/Siddharth1698/fresh-Air and download airemission.json. Add it to this repo in 'src/data/' (create a new folder called data). 
+- Install all the packages: `npm install` 
 - Run the react application: `npm run start`
 
 
