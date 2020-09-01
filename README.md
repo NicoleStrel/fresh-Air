@@ -1,4 +1,4 @@
-# Air-Pollution-Visualizer
+# fresh-Air
 
 The Github files used in hosting amplify app in AWS is : https://github.com/Siddharth1698/fresh-Air
 
